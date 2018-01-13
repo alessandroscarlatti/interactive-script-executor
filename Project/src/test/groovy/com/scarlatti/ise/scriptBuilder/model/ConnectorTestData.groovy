@@ -10,7 +10,7 @@ package com.scarlatti.ise.scriptBuilder.model
 class ConnectorTestData {
 
     static class Id {
-        static String nullId() {
+        static String nil() {
             return null
         }
 
@@ -18,15 +18,15 @@ class ConnectorTestData {
             return ""
         }
 
-        static String sampleId1() {
+        static String sample1() {
             return "connector1"
         }
 
-        static String sampleId2() {
+        static String sample2() {
             return "connector2"
         }
 
-        static String sampleId3() {
+        static String sample3() {
             return "connector3"
         }
     }
