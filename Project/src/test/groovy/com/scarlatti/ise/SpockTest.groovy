@@ -1,4 +1,4 @@
-package com.scarlatti
+package com.scarlatti.ise
 
 import org.junit.Test
 import spock.lang.Specification

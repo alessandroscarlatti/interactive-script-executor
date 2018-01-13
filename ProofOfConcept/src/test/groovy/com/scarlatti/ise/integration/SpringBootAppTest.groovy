@@ -1,6 +1,6 @@
-package com.scarlatti.integration
+package com.scarlatti.ise.integration
 
-import com.scarlatti.ise.SpringBootApp
+import com.scarlatti.ise.classLoaderDemo.SpringBootApp
 import org.junit.Test
 import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification

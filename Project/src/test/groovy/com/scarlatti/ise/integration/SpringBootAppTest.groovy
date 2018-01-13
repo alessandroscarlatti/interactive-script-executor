@@ -1,4 +1,4 @@
-package com.scarlatti.integration
+package com.scarlatti.ise.integration
 
 import com.scarlatti.ise.SpringBootApp
 import org.junit.Test

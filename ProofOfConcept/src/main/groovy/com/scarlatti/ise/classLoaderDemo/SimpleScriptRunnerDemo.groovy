@@ -1,4 +1,4 @@
-package com.scarlatti.ise
+package com.scarlatti.ise.classLoaderDemo
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -31,6 +31,16 @@ class SimpleScriptRunnerDemo implements CommandLineRunner {
         int sum = runnableScript.run(2, 4)
 
         log.info("ran user script and got: ${sum}")
+    }
+
+    void runClass(String clazz) {
+        def parent = getClass().classLoader
+        def loader = new GroovyClassLoader(parent)
+        def clazzInstance = loader.parseClass("""
+                ${clazz}
+        """).newInstance()
+
+        clazzInstance.class.getMethod("start").invoke(clazzInstance)
     }
 
     /**

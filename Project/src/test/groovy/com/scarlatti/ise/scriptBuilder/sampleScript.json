@@ -1,0 +1,31 @@
+{
+  "id": "testScript",
+  "components": [
+    {
+      "id": "Queue #1",
+      "type": "RABBIT_QUEUE",
+      "address": "localhost",
+      "vhost": "/",
+      "queue": "squawks",
+      "username": "guest",
+      "password": "guest"
+    },
+    {
+      "id": "Queue #2",
+      "type": "RABBIT_QUEUE",
+      "address": "localhost",
+      "vhost": "/",
+      "queue": "orks",
+      "username": "guest",
+      "password": "guest"
+    }
+  ],
+  "connectors": [
+    {
+      "id": "connector1",
+      "type": "RABBIT_QUEUE_TRANSFER",
+      "from": "Queue #1",
+      "to": "Queue #2"
+    }
+  ]
+}
