@@ -1,4 +1,4 @@
-package com.scarlatti.ise.rabbitmq.model.components
+package com.scarlatti.ise.palette.rabbitmq.model.components
 
 import com.scarlatti.ise.scriptBuilder.model.ComponentTestData
 
@@ -9,10 +9,10 @@ import com.scarlatti.ise.scriptBuilder.model.ComponentTestData
  * /_/ |_/_/\__/___/___/\_,_/_//_/\_,_/_/  \___/ /___/\__/\_,_/_/ /_/\_,_/\__/\__/_/
  * Friday, 1/12/2018
  */
-class RabbitQueueTestData {
+class RabbitQueuePropsTestData {
 
-    static RabbitQueue nil() {
-        return new RabbitQueue(
+    static RabbitQueueProps nil() {
+        return new RabbitQueueProps(
                 id: ComponentTestData.ID.nil(),
                 address: Address.nil(),
                 vhost: Vhost.nil(),
@@ -22,8 +22,8 @@ class RabbitQueueTestData {
         )
     }
 
-    static RabbitQueue empty() {
-        return new RabbitQueue(
+    static RabbitQueueProps empty() {
+        return new RabbitQueueProps(
                 id: ComponentTestData.ID.empty(),
                 address: Address.empty(),
                 vhost: Vhost.empty(),
@@ -33,8 +33,8 @@ class RabbitQueueTestData {
         )
     }
 
-    static RabbitQueue sample1() {
-        return new RabbitQueue(
+    static RabbitQueueProps sample1() {
+        return new RabbitQueueProps(
                 id: ComponentTestData.ID.sample1(),
                 address: Address.sample1(),
                 vhost: Vhost.sample1(),
@@ -44,8 +44,8 @@ class RabbitQueueTestData {
         )
     }
 
-    static RabbitQueue sample2() {
-        return new RabbitQueue(
+    static RabbitQueueProps sample2() {
+        return new RabbitQueueProps(
                 id: ComponentTestData.ID.sample2(),
                 address: Address.sample2(),
                 vhost: Vhost.sample2(),
@@ -55,8 +55,8 @@ class RabbitQueueTestData {
         )
     }
 
-    static RabbitQueue sample3() {
-        return new RabbitQueue(
+    static RabbitQueueProps sample3() {
+        return new RabbitQueueProps(
                 id: ComponentTestData.ID.sample3(),
                 address: Address.sample3(),
                 vhost: Vhost.sample3(),
@@ -64,6 +64,71 @@ class RabbitQueueTestData {
                 username: Username.sample3(),
                 password: Password.sample3()
         )
+    }
+
+    static class JSON {
+        static String nil() {
+            return """null"""
+        }
+
+        static String defs() {
+            return """
+            {
+                "type": "RABBIT_QUEUE"
+            }"""
+        }
+
+        static String empty() {
+            return """
+            {
+                "id": "${ComponentTestData.ID.empty()}",
+                "type": "RABBIT_QUEUE",
+                "address": "${Address.empty()}",
+                "vhost": "${Vhost.empty()}",
+                "queue": "${Queue.empty()}",
+                "username": "${Username.empty()}",
+                "password": "${Password.empty()}"
+            }"""
+        }
+
+        static String sample1() {
+            return """
+            {
+                "id": "${ComponentTestData.ID.sample1()}",
+                "type": "RABBIT_QUEUE",
+                "address": "${Address.sample1()}",
+                "vhost": "${Vhost.sample1()}",
+                "queue": "${Queue.sample1()}",
+                "username": "${Username.sample1()}",
+                "password": "${Password.sample1()}"
+            }"""
+        }
+
+        static String sample2() {
+            return """
+            {
+                "id": "${ComponentTestData.ID.sample2()}",
+                "type": "RABBIT_QUEUE",
+                "address": "${Address.sample2()}",
+                "vhost": "${Vhost.sample2()}",
+                "queue": "${Queue.sample2()}",
+                "username": "${Username.sample2()}",
+                "password": "${Password.sample2()}"
+            }"""
+        }
+
+        static String sample3() {
+            return """
+            {
+                "id": "${ComponentTestData.ID.sample3()}",
+                "type": "RABBIT_QUEUE",
+                "address": "${Address.sample3()}",
+                "vhost": "${Vhost.sample3()}",
+                "queue": "${Queue.sample3()}",
+                "username": "${Username.sample3()}",
+                "password": "${Password.sample3()}"
+            }"""
+        }
     }
 
     static class Address {

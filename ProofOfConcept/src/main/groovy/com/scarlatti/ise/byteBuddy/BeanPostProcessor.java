@@ -1,8 +1,12 @@
 package com.scarlatti.ise.byteBuddy;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.beans.factory.config.SingletonBeanRegistry;
+import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,6 +22,12 @@ public class BeanPostProcessor implements BeanFactoryPostProcessor {
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         System.out.println("post processor...");
+        beanFactory.registerSingleton("special", new CommandLineRunner() {
+            @Override
+            public void run(String... args) throws Exception {
+                System.out.println("yay!!");
+            }
+        });
 
         // so now I can pull dependencies from the bean factory
         // and build my own beans before the application officially starts!

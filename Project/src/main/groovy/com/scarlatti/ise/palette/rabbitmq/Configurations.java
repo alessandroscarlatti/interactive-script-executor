@@ -1,4 +1,4 @@
-package com.scarlatti.ise.rabbitmq;
+package com.scarlatti.ise.palette.rabbitmq;
 
 /**
  * ______    __                         __           ____             __     __  __  _

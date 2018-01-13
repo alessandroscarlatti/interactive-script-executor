@@ -1,4 +1,4 @@
-package com.scarlatti.ise.scriptBuilder.model;
+package com.scarlatti.ise.scriptBuilder.model.json;
 
 import java.util.List;
 import java.util.Objects;
@@ -10,16 +10,16 @@ import java.util.Objects;
  * /_/ |_/_/\__/___/___/\_,_/_//_/\_,_/_/  \___/ /___/\__/\_,_/_/ /_/\_,_/\__/\__/_/
  * Friday, 1/12/2018
  */
-public class Script {
+public class ScriptProps {
     private String id;
-    private List<Component> components;
-    private List<Connector> connectors;
+    private List<ComponentProps> components;
+    private List<ConnectorProps> connectors;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Script scriptProps = (Script) o;
+        ScriptProps scriptProps = (ScriptProps) o;
         return Objects.equals(id, scriptProps.id) &&
             Objects.equals(components, scriptProps.components) &&
             Objects.equals(connectors, scriptProps.connectors);
@@ -47,19 +47,19 @@ public class Script {
         this.id = id;
     }
 
-    public List<Component> getComponents() {
+    public List<ComponentProps> getComponents() {
         return components;
     }
 
-    public void setComponents(List<Component> components) {
+    public void setComponents(List<ComponentProps> components) {
         this.components = components;
     }
 
-    public List<Connector> getConnectors() {
+    public List<ConnectorProps> getConnectors() {
         return connectors;
     }
 
-    public void setConnectors(List<Connector> connectors) {
+    public void setConnectors(List<ConnectorProps> connectors) {
         this.connectors = connectors;
     }
 }
