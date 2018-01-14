@@ -7,7 +7,7 @@ package com.scarlatti.ise.scriptBuilder.model
  * /_/ |_/_/\__/___/___/\_,_/_//_/\_,_/_/  \___/ /___/\__/\_,_/_/ /_/\_,_/\__/\__/_/
  * Friday, 1/12/2018
  */
-class ComponentTestData {
+class ComponentPropsTestData {
 
     static class ID {
         static String nil() {

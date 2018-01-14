@@ -1,5 +1,10 @@
 package com.scarlatti.ise.scriptBuilder.model;
 
+import com.scarlatti.ise.scriptBuilder.model.json.ConnectorProps;
+import com.scarlatti.ise.scriptExecutor.model.ISEScriptContext;
+
+import java.util.List;
+
 /**
  * ______    __                         __           ____             __     __  __  _
  * ___/ _ | / /__ ___ ___ ___ ____  ___/ /______    / __/______ _____/ /__ _/ /_/ /_(_)
@@ -7,6 +12,8 @@ package com.scarlatti.ise.scriptBuilder.model;
  * /_/ |_/_/\__/___/___/\_,_/_//_/\_,_/_/  \___/ /___/\__/\_,_/_/ /_/\_,_/\__/\__/_/
  * Saturday, 1/13/2018
  */
-public abstract class Component implements Creatable {
-    public abstract String provideId();
+public interface PackageConnectorProvider {
+
+    String providePackageId();
+    List<ConnectorDefinition> provideConnectors();
 }

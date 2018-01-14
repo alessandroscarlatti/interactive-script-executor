@@ -1,6 +1,6 @@
 package com.scarlatti.ise.scriptBuilder.model
 
-import com.scarlatti.ise.palette.rabbitmq.model.components.RabbitQueuePropsTestData
+import com.scarlatti.ise.palette.rabbitmq.model.components.RabbitQueuePropsTest
 import com.scarlatti.ise.palette.rabbitmq.model.connectors.MessageTransferPropsTestData
 import com.scarlatti.ise.scriptBuilder.model.json.ComponentProps
 import com.scarlatti.ise.scriptBuilder.model.json.ConnectorProps
@@ -80,7 +80,7 @@ class ScriptPropsTestData {
             return """{
                     "id": "${Id.sample1()}",
                     "components": [
-                        ${RabbitQueuePropsTestData.JSON.sample1()}
+                        ${RabbitQueuePropsTest.Data.JSON.sample1()}
                     ], 
                     "connectors": [
                         ${MessageTransferPropsTestData.JSON.sample1()}
@@ -92,8 +92,8 @@ class ScriptPropsTestData {
             return """{
                     "id": "${Id.sample2()}",
                     "components": [
-                        ${RabbitQueuePropsTestData.JSON.sample1()},
-                        ${RabbitQueuePropsTestData.JSON.sample2()}
+                        ${RabbitQueuePropsTest.Data.JSON.sample1()},
+                        ${RabbitQueuePropsTest.Data.JSON.sample2()}
                     ], 
                     "connectors": [
                         ${MessageTransferPropsTestData.JSON.sample1()},
@@ -106,9 +106,9 @@ class ScriptPropsTestData {
             return """{
                     "id": "${Id.sample3()}",
                     "components": [
-                        ${RabbitQueuePropsTestData.JSON.sample1()},
-                        ${RabbitQueuePropsTestData.JSON.sample2()},
-                        ${RabbitQueuePropsTestData.JSON.sample3()}
+                        ${RabbitQueuePropsTest.Data.JSON.sample1()},
+                        ${RabbitQueuePropsTest.Data.JSON.sample2()},
+                        ${RabbitQueuePropsTest.Data.JSON.sample3()}
                     ], 
                     "connectors": [
                         ${MessageTransferPropsTestData.JSON.sample1()},
@@ -152,22 +152,22 @@ class ScriptPropsTestData {
 
         static List<ComponentProps> sample1() {
             return [
-                    RabbitQueuePropsTestData.sample1()
+                    RabbitQueuePropsTest.Data.sample1()
             ]
         }
 
         static List<ComponentProps> sample2() {
             return [
-                    RabbitQueuePropsTestData.sample1(),
-                    RabbitQueuePropsTestData.sample2()
+                    RabbitQueuePropsTest.Data.sample1(),
+                    RabbitQueuePropsTest.Data.sample2()
             ]
         }
 
         static List<ComponentProps> sample3() {
             return [
-                    RabbitQueuePropsTestData.sample1(),
-                    RabbitQueuePropsTestData.sample2(),
-                    RabbitQueuePropsTestData.sample3(),
+                    RabbitQueuePropsTest.Data.sample1(),
+                    RabbitQueuePropsTest.Data.sample2(),
+                    RabbitQueuePropsTest.Data.sample3(),
             ]
         }
     }

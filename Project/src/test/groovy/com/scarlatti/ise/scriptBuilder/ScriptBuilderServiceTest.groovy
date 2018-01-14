@@ -1,6 +1,7 @@
 package com.scarlatti.ise.scriptBuilder
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.scarlatti.ise.scriptBuilder.exceptions.ScriptMappingException
 import com.scarlatti.ise.scriptBuilder.model.ScriptPropsTestData
 import com.scarlatti.ise.scriptBuilder.model.json.ScriptProps
 import spock.lang.Specification
@@ -32,7 +33,7 @@ class ScriptBuilderServiceTest extends Specification {
     @Unroll
     "throw exception on parse Script from JSON #json"(String json) {
         setup:
-            ScriptBuilderService scriptBuilderService = new ScriptBuilderService(new ObjectMapper())
+            ScriptBuilderService scriptBuilderService = new ScriptBuilderService(new ObjectMapper(), new ComponentFactory([]))
         when:
             scriptBuilderService.buildScriptProps(json)
         then:

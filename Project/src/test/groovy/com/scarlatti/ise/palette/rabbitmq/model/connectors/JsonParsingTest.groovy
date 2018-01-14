@@ -1,7 +1,7 @@
 package com.scarlatti.ise.palette.rabbitmq.model.connectors
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.scarlatti.ise.scriptBuilder.model.Connector
+import com.scarlatti.ise.palette.rabbitmq.model.MessageTransferProps
 import com.scarlatti.ise.scriptBuilder.model.json.ConnectorProps
 import spock.lang.Specification
 import spock.lang.Unroll

@@ -1,4 +1,4 @@
-package com.scarlatti.ise.palette.rabbitmq.model.connectors;
+package com.scarlatti.ise.palette.rabbitmq.model;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.scarlatti.ise.scriptBuilder.model.json.ConnectorProps;

@@ -1,6 +1,7 @@
 package com.scarlatti.ise.palette.rabbitmq.model.connectors
 
-import com.scarlatti.ise.scriptBuilder.model.ConnectorTestData
+import com.scarlatti.ise.palette.rabbitmq.model.MessageTransferProps
+import com.scarlatti.ise.scriptBuilder.model.ConnectorPropsTestData
 
 /**
  * ______    __                         __           ____             __     __  __  _
@@ -13,7 +14,7 @@ class MessageTransferPropsTestData {
 
     static MessageTransferProps nil() {
         return new MessageTransferProps(
-                id: ConnectorTestData.Id.nil(),
+                id: ConnectorPropsTestData.Id.nil(),
                 from:  From.nil(),
                 to:  To.nil(),
                 howMany: HowMany.nil()
@@ -22,7 +23,7 @@ class MessageTransferPropsTestData {
 
     static MessageTransferProps empty() {
         return new MessageTransferProps(
-                id: ConnectorTestData.Id.empty(),
+                id: ConnectorPropsTestData.Id.empty(),
                 from:  From.empty(),
                 to:  To.empty(),
                 howMany: HowMany.empty()
@@ -31,7 +32,7 @@ class MessageTransferPropsTestData {
 
     static MessageTransferProps sample1() {
         return new MessageTransferProps(
-                id: ConnectorTestData.Id.sample1(),
+                id: ConnectorPropsTestData.Id.sample1(),
                 from:  From.sample1(),
                 to:  To.sample1(),
                 howMany: HowMany.sample1()
@@ -40,7 +41,7 @@ class MessageTransferPropsTestData {
 
     static MessageTransferProps sample2() {
         return new MessageTransferProps(
-                id: ConnectorTestData.Id.sample2(),
+                id: ConnectorPropsTestData.Id.sample2(),
                 from:  From.sample2(),
                 to:  To.sample2(),
                 howMany: HowMany.sample2()
@@ -49,7 +50,7 @@ class MessageTransferPropsTestData {
 
     static MessageTransferProps sample3() {
         return new MessageTransferProps(
-                id: ConnectorTestData.Id.sample3(),
+                id: ConnectorPropsTestData.Id.sample3(),
                 from:  From.sample3(),
                 to:  To.sample3(),
                 howMany: HowMany.sample3()
@@ -68,7 +69,7 @@ class MessageTransferPropsTestData {
         static String sample1() {
             return """
         {
-            "id": "${ConnectorTestData.Id.sample1()}",
+            "id": "${ConnectorPropsTestData.Id.sample1()}",
             "type": "RABBIT_MESSAGE_TRANSFER",
             "from": "${From.sample1()}",
             "to": "${To.sample1()}",
@@ -79,7 +80,7 @@ class MessageTransferPropsTestData {
         static String sample2() {
             return """
         {
-            "id": "${ConnectorTestData.Id.sample2()}",
+            "id": "${ConnectorPropsTestData.Id.sample2()}",
             "type": "RABBIT_MESSAGE_TRANSFER",
             "from": "${From.sample2()}",
             "to": "${To.sample2()}",
@@ -90,7 +91,7 @@ class MessageTransferPropsTestData {
         static String sample3() {
             return """
         {
-            "id": "${ConnectorTestData.Id.sample3()}",
+            "id": "${ConnectorPropsTestData.Id.sample3()}",
             "type": "RABBIT_MESSAGE_TRANSFER",
             "from": "${From.sample3()}",
             "to": "${To.sample3()}",

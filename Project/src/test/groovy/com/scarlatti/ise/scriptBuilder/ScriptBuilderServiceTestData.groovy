@@ -1,9 +1,9 @@
 package com.scarlatti.ise.scriptBuilder
 
-import com.scarlatti.ise.palette.rabbitmq.model.components.RabbitQueuePropsTestData
+import com.scarlatti.ise.palette.rabbitmq.model.components.RabbitQueuePropsTest
 import com.scarlatti.ise.palette.rabbitmq.model.connectors.MessageTransferPropsTestData
-import com.scarlatti.ise.scriptBuilder.model.Script
 import com.scarlatti.ise.scriptBuilder.model.ScriptPropsTestData
+import com.scarlatti.ise.scriptBuilder.model.json.ScriptProps
 
 /**
  * ______    __                         __           ____             __     __  __  _
@@ -19,8 +19,8 @@ class ScriptBuilderServiceTestData {
                 return """{
                     "id": "${ScriptPropsTestData.Id.sample2()}",
                     "components": [
-                        ${RabbitQueuePropsTestData.JSON.sample1()},
-                        ${RabbitQueuePropsTestData.JSON.sample2()}
+                        ${RabbitQueuePropsTest.Data.JSON.sample1()},
+                        ${RabbitQueuePropsTest.Data.JSON.sample2()}
                     ], 
                     "connectors": [
                         ${MessageTransferPropsTestData.JSON.sample1()}
@@ -32,8 +32,8 @@ class ScriptBuilderServiceTestData {
                 return """{
                     "id": "${ScriptPropsTestData.Id.sample3()}",
                     "components": [
-                        ${RabbitQueuePropsTestData.JSON.sample1()},
-                        ${RabbitQueuePropsTestData.JSON.sample2()},
+                        ${RabbitQueuePropsTest.Data.JSON.sample1()},
+                        ${RabbitQueuePropsTest.Data.JSON.sample2()},
                     ], 
                     "connectors": [
                         ${MessageTransferPropsTestData.JSON.sample1()},,,,,,,
@@ -43,8 +43,8 @@ class ScriptBuilderServiceTestData {
         }
 
         static class Return {
-            static Script sample1() {
-                return new Script(
+            static ScriptProps sample1() {
+                return new ScriptProps(
                         id: ScriptPropsTestData.Id.sample1(),
                         components: ScriptPropsTestData.Components.sample2(),
                         connectors: ScriptPropsTestData.Connectors.sample1()

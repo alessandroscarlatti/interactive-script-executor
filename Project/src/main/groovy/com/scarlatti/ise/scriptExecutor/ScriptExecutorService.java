@@ -1,7 +1,7 @@
 package com.scarlatti.ise.scriptExecutor;
 
 import com.scarlatti.ise.scriptBuilder.ScriptBuilderService;
-import com.scarlatti.ise.scriptBuilder.model.json.ComponentProps;
+import com.scarlatti.ise.scriptBuilder.model.ISEScript;
 import com.scarlatti.ise.scriptBuilder.model.json.ScriptProps;
 
 /**
@@ -23,8 +23,8 @@ public class ScriptExecutorService {
     }
 
     public ScriptExecutionResult execute(String scriptJSON) {
-        ScriptProps scriptProps = scriptBuilderService.buildScriptProps(scriptJSON);
-        return execute(scriptProps);
+        ISEScript script = scriptBuilderService.buildScript(scriptJSON);
+        return execute(script);
     }
 
     /**
@@ -36,10 +36,11 @@ public class ScriptExecutorService {
      * @return the result of the execution
      */
     public ScriptExecutionResult execute(ScriptProps scriptProps) {
+        ISEScript script = scriptBuilderService.buildScript(scriptProps);
+        return execute(script);
+    }
 
-        for (ComponentProps component : scriptProps.getComponents()) {
-
-        }
+    public ScriptExecutionResult execute(ISEScript script) {
 
         return new ScriptExecutionResult(0);
     }

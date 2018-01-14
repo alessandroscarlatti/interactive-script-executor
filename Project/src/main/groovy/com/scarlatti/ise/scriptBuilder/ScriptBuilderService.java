@@ -1,6 +1,12 @@
 package com.scarlatti.ise.scriptBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.scarlatti.ise.scriptBuilder.exceptions.ScriptMappingException;
+import com.scarlatti.ise.scriptBuilder.model.ISEComponent;
+import com.scarlatti.ise.scriptBuilder.model.ISEConnector;
+import com.scarlatti.ise.scriptBuilder.model.ISEScript;
+import com.scarlatti.ise.scriptBuilder.model.json.ComponentProps;
+import com.scarlatti.ise.scriptBuilder.model.json.ConnectorProps;
 import com.scarlatti.ise.scriptBuilder.model.json.ScriptProps;
 
 /**
@@ -20,9 +26,45 @@ import com.scarlatti.ise.scriptBuilder.model.json.ScriptProps;
 public class ScriptBuilderService {
 
     private ObjectMapper objectMapper;
+    private ComponentFactory componentFactory;
+    private ConnectorFactory connectorFactory;
 
-    public ScriptBuilderService(ObjectMapper objectMapper) {
+    public ScriptBuilderService(ObjectMapper objectMapper, ComponentFactory componentFactory, ConnectorFactory connectorFactory) {
         this.objectMapper = objectMapper;
+        this.componentFactory = componentFactory;
+    }
+
+    public ISEScript buildScript(String json) {
+        return buildScript(buildScriptProps(json));
+    }
+
+    /**
+     * The ScriptBuilderService should interpret the script props
+     * and return a script object, ready to be executed.
+     *
+     * @param scriptProps the script props to interpret.
+     * @return the script, ready to be executed.
+     */
+    public ISEScript buildScript(ScriptProps scriptProps) {
+        // this is where we take each componentProps
+        // and send its getComponentType to the component factory
+        // we add a new instance of the component (connected with its props)
+        // to the working script.
+        ISEScript workingScript = new ISEScript(scriptProps.getId());
+
+        for (ComponentProps props : scriptProps.getComponents()) {
+            ISEComponent component = componentFactory.getComponent(props.componentType(), props);
+            workingScript.getComponents().add(component);
+        }
+
+        // then we do similarly with the connectors
+
+        for (ConnectorProps props : scriptProps.getConnectors()) {
+            ISEConnector connector = connectorFactory.getConnector(props.connectorType(), props);
+            workingScript.getConnectors().add(connector);
+        }
+
+        return workingScript;
     }
 
     /**

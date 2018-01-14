@@ -1,7 +1,9 @@
-package com.scarlatti.ise.palette.rabbitmq.model.components;
+package com.scarlatti.ise.palette.rabbitmq.components;
 
-import com.scarlatti.ise.scriptBuilder.model.Component;
-import com.scarlatti.ise.scriptBuilder.model.Creation;
+import com.scarlatti.ise.palette.rabbitmq.model.RabbitQueueProps;
+import com.scarlatti.ise.scriptBuilder.model.*;
+import com.scarlatti.ise.scriptBuilder.model.json.ComponentProps;
+import com.scarlatti.ise.scriptExecutor.model.ISEScriptContext;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 
 import java.util.List;
@@ -13,7 +15,7 @@ import java.util.List;
  * /_/ |_/_/\__/___/___/\_,_/_//_/\_,_/_/  \___/ /___/\__/\_,_/_/ /_/\_,_/\__/\__/_/
  * Saturday, 1/13/2018
  */
-public class RabbitQueue extends Component {
+public class RabbitQueue extends ISEComponent implements ComponentRegistrar {
     private RabbitQueueProps props;
 
     public RabbitQueue(RabbitQueueProps props) {
@@ -30,6 +32,11 @@ public class RabbitQueue extends Component {
         return null;
     }
 
+    @Override
+    public void registerComponent(ISEScriptContext context) {
+        context.registerSingletonComponent(this);
+    }
+
     public RabbitQueueProps getProps() {
         return props;
     }
@@ -43,5 +50,17 @@ public class RabbitQueue extends Component {
         return "RabbitQueue{" +
             "props=" + props +
             '}';
+    }
+
+    public static class DefaultComponentDefinition extends ComponentDefinition {
+        @Override
+        public String forType() {
+            return RabbitQueueProps.COMPONENT_NAME;
+        }
+
+        @Override
+        public ISEComponent provideComponent(ComponentProps props) {
+            return new RabbitQueue((RabbitQueueProps)props);
+        }
     }
 }

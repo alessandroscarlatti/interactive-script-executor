@@ -1,4 +1,4 @@
-package com.scarlatti.ise.scriptBuilder;
+package com.scarlatti.ise.scriptBuilder.exceptions;
 
 /**
  * ______    __                         __           ____             __     __  __  _
