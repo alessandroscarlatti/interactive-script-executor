@@ -30,53 +30,5 @@ class RabbitQueueTest {
         static RabbitQueue sample3() {
             return new RabbitQueue(RabbitQueuePropsTest.Data.sample3())
         }
-
-        class DefaultComponentDefinition {
-            static ComponentDefinition nil() {
-                return new ComponentDefinition() {
-                    @Override
-                    ISEComponent provideComponent(ComponentProps props) {
-                        return null
-                    }
-
-                    @Override
-                    String forType() {
-                        return null
-                    }
-                }
-            }
-
-            static ComponentDefinition sample1() {
-                return new RabbitQueue.DefaultComponentDefinition()
-            }
-
-            static ComponentDefinition sample2() {
-                return new ComponentDefinition() {
-                    @Override
-                    ISEComponent provideComponent(ComponentProps props) {
-                        new RabbitQueue(RabbitQueuePropsTest.Data.sample2())
-                    }
-
-                    @Override
-                    String forType() {
-                        return RabbitQueueProps.COMPONENT_NAME
-                    }
-                }
-            }
-
-            static ComponentDefinition sample3() {
-                return new ComponentDefinition() {
-                    @Override
-                    ISEComponent provideComponent(ComponentProps props) {
-                        new RabbitQueue(RabbitQueuePropsTest.Data.sample3())
-                    }
-
-                    @Override
-                    String forType() {
-                        return RabbitQueueProps.COMPONENT_NAME
-                    }
-                }
-            }
-        }
     }
 }
