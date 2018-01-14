@@ -1,7 +1,9 @@
 package com.scarlatti.ise.app.scriptExecutor
 
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.scarlatti.ise.app.scriptBuilder.ComponentFactoryTest
+import com.scarlatti.ise.app.scriptBuilder.ConnectorFactoryTest
 import com.scarlatti.ise.app.scriptBuilder.ScriptBuilderService
-import com.scarlatti.ise.app.scriptBuilder.model.ScriptPropsTestData
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -14,22 +16,17 @@ import spock.lang.Unroll
  */
 class ScriptExecutorServiceTest extends Specification {
 
+    ScriptBuilderService scriptBuilderService = Spy(ScriptBuilderService, constructorArgs: [
+            new ObjectMapper(),
+            ComponentFactoryTest.Data.mocked(),
+            ConnectorFactoryTest.Data.mocked()
+    ])
+
+    ScriptExecutorService scriptExecutorService = Spy(ScriptExecutorService, constructorArgs: [scriptBuilderService])
+
     @Unroll
     "executes script from ScriptBuilderService"(Closure execute) {
-        setup:
-            ScriptBuilderService scriptBuilderService = Mock(ScriptBuilderService)
-            ScriptExecutorService scriptExecutorService = Spy(ScriptExecutorService, constructorArgs: [scriptBuilderService])
 
-            _ * scriptBuilderService.buildScriptProps(_) >> { return ScriptPropsTestData.sample1()}
-        when:
-            execute(scriptExecutorService)
-        then:
-            1 * scriptExecutorService.execute(ScriptPropsTestData.sample1())
-        where:
-            execute << [
-                    {service -> service.execute(ScriptPropsTestData.JSON.sample1())},
-                    {service -> service.execute(ScriptPropsTestData.sample1())}
-            ]
     }
 
     static class Data {

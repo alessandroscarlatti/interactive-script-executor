@@ -52,5 +52,13 @@ class ScriptBuilderServiceTest extends Specification {
                     ConnectorFactoryTest.Data.mocked()
             )
         }
+
+        static Closure<ScriptBuilderService> spy = { Specification test ->
+            return test.Spy(ScriptBuilderService, constructorArgs: [
+                    new ObjectMapper(),
+                    ComponentFactoryTest.Data.mocked(),
+                    ConnectorFactoryTest.Data.mocked()
+            ])
+        }
     }
 }

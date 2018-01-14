@@ -1,6 +1,8 @@
 package com.scarlatti.ise.script;
 
 import com.scarlatti.ise.app.scriptExecutor.model.ISEScriptContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
@@ -17,9 +19,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class BeanInitializer implements BeanFactoryPostProcessor {
 
+    private static final Logger log = LoggerFactory.getLogger(BeanInitializer.class);
+
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        System.out.println("Initializing Script beans.");
+        log.info("Initializing Script beans.");
         beanFactory.registerSingleton("special", new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
