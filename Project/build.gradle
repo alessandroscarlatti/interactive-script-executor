@@ -37,11 +37,18 @@ task devServer(group: 'application') {
 }
 
 test {
-	exclude '**/integration/**'
+	gradle.getTaskGraph().whenReady { graph ->
+		// how can we tell if IntelliJ is building the test?
+		if (!graph.hasTask(":cleanTest")) {
+			test {
+					exclude '**/integration/**'
+			}
+		}
+	}
 }
 
 task integrationTest(type: Test, group: 'verification') {
-	include '**/integration/**'
+//	include '**/integration/**'
 }
 
 

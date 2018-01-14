@@ -3,6 +3,7 @@ package com.scarlatti.ise.app.scriptExecutor.model;
 import com.scarlatti.ise.app.scriptBuilder.model.ISEComponent;
 import com.scarlatti.ise.app.scriptBuilder.model.ISEConnector;
 import com.scarlatti.ise.app.scriptExecutor.ScriptExecutionResult;
+import com.scarlatti.ise.script.ISEScriptApplication;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 
@@ -18,6 +19,10 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
  */
 public class ISEScriptContext {
     private ConfigurableListableBeanFactory beanFactory;
+
+    public ISEScriptContext(ConfigurableListableBeanFactory beanFactory) {
+        this.beanFactory = beanFactory;
+    }
 
     /**
      * Register this component instance with the Spring
@@ -37,6 +42,26 @@ public class ISEScriptContext {
      */
     public void registerSingletonConnnector(ISEConnector connector) {
         beanFactory.registerSingleton(connector.provideId(), connector);
+    }
+
+    /**
+     * Register any object with the Spring application context.
+     * under the given ID.
+     * @param name the ID to assign to the bean
+     * @param object the object to add to the Spring context.
+     */
+    public void registerSingletonObject(String name, Object object) {
+        beanFactory.registerSingleton(name, object);
+    }
+
+    /**
+     * Register any object with the Spring application context.
+     * under an automatically generated hash code ID.
+     *
+     * @param object the object to add to the Spring context.
+     */
+    public void registerSingletonObject(Object object) {
+        beanFactory.registerSingleton("object" + System.identityHashCode(object), object);
     }
 
     /**
@@ -78,12 +103,16 @@ public class ISEScriptContext {
      * @return the result of the callback
      */
     public static ScriptExecutionResult run(ISEScriptContextCallback callback) {
-        // TODO create the Spring context here...
-        ISEScriptContext context = new ISEScriptContext();
 
-        // now call the callback
-        return callback.doInContext(context);
+        ScriptExecutionResult result = new ScriptExecutionResult();
 
+        ISEScriptApplication.run(beanFactory -> {
+            ISEScriptContext context = new ISEScriptContext(beanFactory);
+            callback.doInContext(context);
+            result.setStatusCode(0);
+        });
+
+        return result;
     }
 
     /**

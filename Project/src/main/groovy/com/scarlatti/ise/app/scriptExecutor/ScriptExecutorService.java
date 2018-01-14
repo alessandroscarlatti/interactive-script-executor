@@ -4,6 +4,8 @@ import com.scarlatti.ise.app.scriptBuilder.ScriptBuilderService;
 import com.scarlatti.ise.app.scriptBuilder.model.ISEScript;
 import com.scarlatti.ise.app.scriptBuilder.model.json.ScriptProps;
 import com.scarlatti.ise.app.scriptExecutor.model.ISEScriptContext;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 /**
  * ______    __                         __           ____             __     __  __  _
@@ -15,6 +17,7 @@ import com.scarlatti.ise.app.scriptExecutor.model.ISEScriptContext;
  * The ScriptExecutorService will take in either a json ScriptProps
  * or a POJO ScriptProps and will execute the script.
  */
+@Component
 public class ScriptExecutorService {
 
     private ScriptBuilderService scriptBuilderService;
@@ -44,9 +47,16 @@ public class ScriptExecutorService {
      */
     public synchronized ScriptExecutionResult execute(ISEScript script) {
 
-        // create the script context...
         return ISEScriptContext.run(context -> {
-            script.getComponents().get(0).registerComponent(context);
+
+            context.registerSingletonObject("special2", new CommandLineRunner() {
+                @Override
+                public void run(String... args) throws Exception {
+                    System.out.println("yay!!");
+                }
+            });
+
+            // TODO register the components
 
             return new ScriptExecutionResult(0);
         });
