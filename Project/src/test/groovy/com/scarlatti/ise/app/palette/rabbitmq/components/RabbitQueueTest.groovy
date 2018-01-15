@@ -1,7 +1,4 @@
-package com.scarlatti.ise.app.palette.rabbitmq.model.components
-
-import com.scarlatti.ise.app.palette.rabbitmq.components.RabbitQueue
-
+package com.scarlatti.ise.app.palette.rabbitmq.components
 /**
  * ______    __                         __           ____             __     __  __  _
  * ___/ _ | / /__ ___ ___ ___ ____  ___/ /______    / __/______ _____/ /__ _/ /_/ /_(_)
@@ -25,6 +22,10 @@ class RabbitQueueTest {
 
         static RabbitQueue sample3() {
             return new RabbitQueue(RabbitQueuePropsTest.Data.sample3())
+        }
+
+        static RabbitQueue sample4() {
+            return new RabbitQueue(RabbitQueuePropsTest.Data.sample4())
         }
     }
 }

@@ -15,6 +15,9 @@ public class ISEScript {
     private List<ISEComponent> components = new ArrayList<>();
     private List<ISEConnector> connectors = new ArrayList<>();
 
+    public ISEScript() {
+    }
+
     public ISEScript(String id) {
         this.id = id;
     }

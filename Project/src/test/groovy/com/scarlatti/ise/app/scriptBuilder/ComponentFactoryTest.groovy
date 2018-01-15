@@ -1,8 +1,8 @@
 package com.scarlatti.ise.app.scriptBuilder
 
 import com.scarlatti.ise.app.palette.rabbitmq.components.RabbitQueue
-import com.scarlatti.ise.app.palette.rabbitmq.model.RabbitQueueProps
-import com.scarlatti.ise.app.palette.rabbitmq.model.components.RabbitQueuePropsTest
+import com.scarlatti.ise.app.palette.rabbitmq.components.RabbitQueueProps
+import com.scarlatti.ise.app.palette.rabbitmq.components.RabbitQueuePropsTest
 import com.scarlatti.ise.app.scriptBuilder.exceptions.ComponentFactoryException
 import com.scarlatti.ise.app.scriptBuilder.model.ComponentDefinition
 import com.scarlatti.ise.app.scriptBuilder.model.ComponentDefinitionTest

@@ -1,7 +1,7 @@
 package com.scarlatti.ise.app.scriptBuilder.model
 
 import com.scarlatti.ise.app.palette.rabbitmq.components.RabbitQueue
-import com.scarlatti.ise.app.palette.rabbitmq.model.components.RabbitQueuePropsTest
+import com.scarlatti.ise.app.palette.rabbitmq.components.RabbitQueuePropsTest
 import com.scarlatti.ise.app.scriptBuilder.ComponentFactoryTest
 import com.scarlatti.ise.app.scriptBuilder.model.json.ComponentProps
 import spock.lang.Specification

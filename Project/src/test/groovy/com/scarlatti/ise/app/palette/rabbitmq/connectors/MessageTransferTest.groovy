@@ -1,4 +1,4 @@
-package com.scarlatti.ise.app.palette.rabbitmq.model.connectors
+package com.scarlatti.ise.app.palette.rabbitmq.connectors
 
 /**
  * ______    __                         __           ____             __     __  __  _

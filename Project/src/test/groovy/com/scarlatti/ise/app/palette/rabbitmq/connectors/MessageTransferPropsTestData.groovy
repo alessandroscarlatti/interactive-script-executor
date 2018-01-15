@@ -1,6 +1,5 @@
-package com.scarlatti.ise.app.palette.rabbitmq.model.connectors
+package com.scarlatti.ise.app.palette.rabbitmq.connectors
 
-import com.scarlatti.ise.app.palette.rabbitmq.model.MessageTransferProps
 import com.scarlatti.ise.app.scriptBuilder.model.ConnectorPropsTestData
 
 /**

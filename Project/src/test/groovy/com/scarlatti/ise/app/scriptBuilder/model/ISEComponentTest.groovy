@@ -1,6 +1,6 @@
 package com.scarlatti.ise.app.scriptBuilder.model
 
-import com.scarlatti.ise.app.palette.rabbitmq.model.components.RabbitQueueTest
+import com.scarlatti.ise.app.palette.rabbitmq.components.RabbitQueueTest
 import spock.lang.Specification
 
 /**
@@ -22,6 +22,10 @@ class ISEComponentTest extends Specification {
 
         static ISEComponent sample3() {
             return RabbitQueueTest.Data.sample3()
+        }
+
+        static ISEComponent sample4() {
+            return RabbitQueueTest.Data.sample4()
         }
     }
 }

@@ -1,7 +1,6 @@
-package com.scarlatti.ise.app.palette.rabbitmq.model.components
+package com.scarlatti.ise.app.palette.rabbitmq.components
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.scarlatti.ise.app.palette.rabbitmq.model.RabbitQueueProps
 import com.scarlatti.ise.app.scriptBuilder.model.ComponentPropsTestData
 import com.scarlatti.ise.app.scriptBuilder.model.json.ComponentProps
 import spock.lang.Specification
@@ -88,6 +87,17 @@ class RabbitQueuePropsTest extends Specification {
             )
         }
 
+        static RabbitQueueProps sample4() {
+            return new RabbitQueueProps(
+                    id: ComponentPropsTestData.ID.sample4(),
+                    address: Address.sample4(),
+                    vhost: Vhost.sample4(),
+                    queue: Queue.sample4(),
+                    username: Username.sample4(),
+                    password: Password.sample4()
+            )
+        }
+
         static class JSON {
             static String nil() {
                 return """null"""
@@ -151,6 +161,19 @@ class RabbitQueuePropsTest extends Specification {
                     "password": "${Password.sample3()}"
                 }"""
             }
+
+            static String sample4() {
+                return """
+                {
+                    "id": "${ComponentPropsTestData.ID.sample4()}",
+                    "type": "RABBIT_QUEUE",
+                    "address": "${Address.sample4()}",
+                    "vhost": "${Vhost.sample4()}",
+                    "queue": "${Queue.sample4()}",
+                    "username": "${Username.sample4()}",
+                    "password": "${Password.sample4()}"
+                }"""
+            }
         }
 
         static class Address {
@@ -172,6 +195,10 @@ class RabbitQueuePropsTest extends Specification {
 
             static String sample3() {
                 return "what.scarlatti.io"
+            }
+
+            static String sample4() {
+                return "you.know.us"
             }
         }
 
@@ -195,6 +222,10 @@ class RabbitQueuePropsTest extends Specification {
             static String sample3() {
                 return "/penguins"
             }
+
+            static String sample4() {
+                return "/cow"
+            }
         }
 
         static class Queue {
@@ -216,6 +247,10 @@ class RabbitQueuePropsTest extends Specification {
 
             static String sample3() {
                 return "orks"
+            }
+
+            static String sample4() {
+                return "snacks"
             }
         }
 
@@ -239,6 +274,10 @@ class RabbitQueuePropsTest extends Specification {
             static String sample3() {
                 return "ascarlatti@alessandroscarlatti.what"
             }
+
+            static String sample4() {
+                return "domenico@baroque.it"
+            }
         }
 
         static class Password {
@@ -260,6 +299,10 @@ class RabbitQueuePropsTest extends Specification {
 
             static String sample3() {
                 return "thisisabadpassworddon'tuseit"
+            }
+
+            static String sample4() {
+                return "passwordpassword"
             }
         }
     }

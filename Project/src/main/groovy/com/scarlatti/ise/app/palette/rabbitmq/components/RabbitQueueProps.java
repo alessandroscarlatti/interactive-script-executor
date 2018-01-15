@@ -1,4 +1,4 @@
-package com.scarlatti.ise.app.palette.rabbitmq.model;
+package com.scarlatti.ise.app.palette.rabbitmq.components;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.scarlatti.ise.app.scriptBuilder.model.json.ComponentProps;

@@ -1,8 +1,8 @@
 package com.scarlatti.ise.app.scriptBuilder
 
 import com.scarlatti.ise.app.palette.rabbitmq.connectors.MessageTransfer
-import com.scarlatti.ise.app.palette.rabbitmq.model.MessageTransferProps
-import com.scarlatti.ise.app.palette.rabbitmq.model.connectors.MessageTransferPropsTestData
+import com.scarlatti.ise.app.palette.rabbitmq.connectors.MessageTransferProps
+import com.scarlatti.ise.app.palette.rabbitmq.connectors.MessageTransferPropsTestData
 import com.scarlatti.ise.app.scriptBuilder.exceptions.ConnectorFactoryException
 import com.scarlatti.ise.app.scriptBuilder.model.ConnectorDefinition
 import com.scarlatti.ise.app.scriptBuilder.model.ConnectorDefinitionTest

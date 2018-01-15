@@ -2,7 +2,7 @@ package com.scarlatti.ise.app.scriptBuilder.model.json;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.scarlatti.ise.app.palette.rabbitmq.model.MessageTransferProps;
+import com.scarlatti.ise.app.palette.rabbitmq.connectors.MessageTransferProps;
 
 /**
  * ______    __                         __           ____             __     __  __  _

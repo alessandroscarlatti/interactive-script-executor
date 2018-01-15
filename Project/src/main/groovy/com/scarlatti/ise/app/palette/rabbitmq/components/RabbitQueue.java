@@ -1,6 +1,5 @@
 package com.scarlatti.ise.app.palette.rabbitmq.components;
 
-import com.scarlatti.ise.app.palette.rabbitmq.model.RabbitQueueProps;
 import com.scarlatti.ise.app.scriptBuilder.model.*;
 import com.scarlatti.ise.app.scriptBuilder.model.json.ComponentProps;
 import com.scarlatti.ise.app.scriptExecutor.model.ISEScriptContext;

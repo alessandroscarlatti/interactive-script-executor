@@ -29,5 +29,9 @@ class ComponentPropsTestData {
         static String sample3() {
             return "Queue #3"
         }
+
+        static String sample4() {
+            return "Queue #4"
+        }
     }
 }

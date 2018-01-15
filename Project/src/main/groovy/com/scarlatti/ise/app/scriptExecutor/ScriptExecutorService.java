@@ -46,7 +46,10 @@ public class ScriptExecutorService {
      * @return the result of the execution
      */
     public synchronized ScriptExecutionResult execute(ISEScript script) {
+        return doExecute(script);
+    }
 
+    protected synchronized ScriptExecutionResult doExecute(ISEScript script) {
         return ISEScriptContext.run(context -> {
 
             context.registerSingletonObject("special2", new CommandLineRunner() {

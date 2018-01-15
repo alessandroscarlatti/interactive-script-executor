@@ -1,7 +1,7 @@
 package com.scarlatti.ise.app.scriptBuilder
 
-import com.scarlatti.ise.app.palette.rabbitmq.model.components.RabbitQueuePropsTest
-import com.scarlatti.ise.app.palette.rabbitmq.model.connectors.MessageTransferPropsTestData
+import com.scarlatti.ise.app.palette.rabbitmq.components.RabbitQueuePropsTest
+import com.scarlatti.ise.app.palette.rabbitmq.connectors.MessageTransferPropsTestData
 import com.scarlatti.ise.app.scriptBuilder.model.ScriptPropsTestData
 import com.scarlatti.ise.app.scriptBuilder.model.json.ScriptProps
 

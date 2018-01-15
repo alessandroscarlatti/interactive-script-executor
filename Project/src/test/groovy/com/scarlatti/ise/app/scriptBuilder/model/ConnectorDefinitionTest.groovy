@@ -1,7 +1,7 @@
 package com.scarlatti.ise.app.scriptBuilder.model
 
 import com.scarlatti.ise.app.palette.rabbitmq.connectors.MessageTransfer
-import com.scarlatti.ise.app.palette.rabbitmq.model.MessageTransferProps
+import com.scarlatti.ise.app.palette.rabbitmq.connectors.MessageTransferProps
 import com.scarlatti.ise.app.scriptBuilder.ConnectorFactoryTest
 import com.scarlatti.ise.app.scriptBuilder.model.json.ConnectorProps
 import spock.lang.Specification
