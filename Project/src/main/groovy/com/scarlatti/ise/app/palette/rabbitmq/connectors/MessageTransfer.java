@@ -1,9 +1,12 @@
 package com.scarlatti.ise.app.palette.rabbitmq.connectors;
 
+import com.scarlatti.ise.app.palette.rabbitmq.components.RabbitQueue;
 import com.scarlatti.ise.app.scriptBuilder.model.ConnectorDefinition;
 import com.scarlatti.ise.app.scriptBuilder.model.ISEConnector;
 import com.scarlatti.ise.app.scriptBuilder.model.json.ConnectorProps;
 import com.scarlatti.ise.app.scriptExecutor.model.ISEScriptContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * ______    __                         __           ____             __     __  __  _
@@ -14,6 +17,7 @@ import com.scarlatti.ise.app.scriptExecutor.model.ISEScriptContext;
  */
 public class MessageTransfer extends ISEConnector {
     private MessageTransferProps props;
+    private static final Logger log = LoggerFactory.getLogger(RabbitQueue.class);
 
     public MessageTransfer(MessageTransferProps props) {
         this.props = props;
@@ -26,6 +30,8 @@ public class MessageTransfer extends ISEConnector {
 
     @Override
     public void registerConnector(ISEScriptContext context) {
+        log.info("Registering component: " + this.provideId() + " " + this);
+
         context.registerSingletonConnnector(this);
     }
 

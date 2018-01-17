@@ -4,6 +4,8 @@ import com.scarlatti.ise.app.scriptBuilder.model.ISEComponent;
 import com.scarlatti.ise.app.scriptBuilder.model.ISEConnector;
 import com.scarlatti.ise.app.scriptExecutor.ScriptExecutionResult;
 import com.scarlatti.ise.script.ISEScriptApplication;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 
@@ -19,6 +21,7 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
  */
 public class ISEScriptContext {
     private ConfigurableListableBeanFactory beanFactory;
+    private static final Logger log = LoggerFactory.getLogger(ISEScriptContext.class);
 
     public ISEScriptContext(ConfigurableListableBeanFactory beanFactory) {
         this.beanFactory = beanFactory;
@@ -31,7 +34,7 @@ public class ISEScriptContext {
      * @param component the component to add to the Spring context.
      */
     public void registerSingletonComponent(ISEComponent component) {
-        beanFactory.registerSingleton(component.provideId(), component);
+        doRegisterSingletonObject(component.provideId(), component);
     }
 
     /**
@@ -41,7 +44,7 @@ public class ISEScriptContext {
      * @param connector the component to add to the Spring context.
      */
     public void registerSingletonConnnector(ISEConnector connector) {
-        beanFactory.registerSingleton(connector.provideId(), connector);
+        doRegisterSingletonObject(connector.provideId(), connector);
     }
 
     /**
@@ -51,7 +54,7 @@ public class ISEScriptContext {
      * @param object the object to add to the Spring context.
      */
     public void registerSingletonObject(String name, Object object) {
-        beanFactory.registerSingleton(name, object);
+        doRegisterSingletonObject(name, object);
     }
 
     /**
@@ -62,6 +65,11 @@ public class ISEScriptContext {
      */
     public void registerSingletonObject(Object object) {
         beanFactory.registerSingleton("object" + System.identityHashCode(object), object);
+    }
+
+    protected  void doRegisterSingletonObject(String name, Object object) {
+        log.info("Registering bean '" + name + "': " + object);
+        beanFactory.registerSingleton(name, object);
     }
 
     /**

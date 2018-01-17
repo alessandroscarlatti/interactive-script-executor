@@ -2,6 +2,10 @@ spring:
   output:
     ansi:
       enabled: always
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+  jmx:
+    enabled: false
 
 logging:
   level:

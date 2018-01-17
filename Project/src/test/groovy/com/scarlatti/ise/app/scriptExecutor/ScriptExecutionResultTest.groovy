@@ -26,7 +26,7 @@ class ScriptExecutionResultTest extends Specification {
 
         static ScriptExecutionResult sample1() {
             return new ScriptExecutionResult(
-                    statusCode: -1
+                    statusCode: 0
             )
         }
 

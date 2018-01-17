@@ -24,7 +24,7 @@ public class ISEScript {
 
     @Override
     public String toString() {
-        return "ScriptProps{" +
+        return "ISEScript{" +
             "id='" + id + '\'' +
             ", components=" + components +
             ", connectors=" + connectors +

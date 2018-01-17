@@ -1,8 +1,15 @@
 package com.scarlatti.ise.app.palette.rabbitmq.components;
 
-import com.scarlatti.ise.app.scriptBuilder.model.*;
+import com.scarlatti.ise.app.scriptBuilder.model.ComponentDefinition;
+import com.scarlatti.ise.app.scriptBuilder.model.Creation;
+import com.scarlatti.ise.app.scriptBuilder.model.ISEComponent;
 import com.scarlatti.ise.app.scriptBuilder.model.json.ComponentProps;
 import com.scarlatti.ise.app.scriptExecutor.model.ISEScriptContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 
 import java.util.List;
@@ -16,6 +23,7 @@ import java.util.List;
  */
 public class RabbitQueue extends ISEComponent{
     private RabbitQueueProps props;
+    private static final Logger log = LoggerFactory.getLogger(RabbitQueue.class);
 
     public RabbitQueue(RabbitQueueProps props) {
         this.props = props;
@@ -28,12 +36,20 @@ public class RabbitQueue extends ISEComponent{
 
     @Override
     public List<Creation> provideCreations(ConfigurableListableBeanFactory beanFactory) {
+
+        // TODO I don't think I'm using this...
         return null;
     }
 
     @Override
     public void registerComponent(ISEScriptContext context) {
-        context.registerSingletonComponent(this);
+        log.info("Registering component: " + this.provideId() + " " + this);
+
+        ConnectionFactory connectionFactory = new ISERabbitConnectionFactory(props);
+        context.registerSingletonObject("connectionFactory-" + props.getId(), connectionFactory);
+
+        RabbitTemplate rabbitTemplate = new ISERabbitTemplate(connectionFactory, props);
+        context.registerSingletonObject("rabbitTemplate-" + rabbitTemplate);
     }
 
     public RabbitQueueProps getProps() {
@@ -49,6 +65,30 @@ public class RabbitQueue extends ISEComponent{
         return "RabbitQueue{" +
             "props=" + props +
             '}';
+    }
+
+    public static class ISERabbitConnectionFactory extends CachingConnectionFactory {
+        public ISERabbitConnectionFactory(RabbitQueueProps props) {
+            super();
+
+            if (props == null) throw new IllegalStateException("ISERabbitConnectionFactory may not accept null RabbitQueueProps");
+
+            this.setAddresses(props.getAddress());
+            this.setVirtualHost(props.getVhost());
+            this.setUsername(props.getUsername());
+            this.setPassword(props.getPassword());
+        }
+    }
+
+    public static class ISERabbitTemplate extends RabbitTemplate {
+        public ISERabbitTemplate(ConnectionFactory connectionFactory, RabbitQueueProps props) {
+            super();
+
+            if (props == null) throw new IllegalStateException("ISERabbitTemplate may not accept null RabbitQueueProps");
+
+            this.setQueue(props.getQueue());
+            this.setConnectionFactory(connectionFactory);
+        }
     }
 
     public static class DefaultComponentDefinition extends ComponentDefinition {

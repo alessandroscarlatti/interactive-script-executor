@@ -1,9 +1,13 @@
 package com.scarlatti.ise.app.scriptExecutor;
 
 import com.scarlatti.ise.app.scriptBuilder.ScriptBuilderService;
+import com.scarlatti.ise.app.scriptBuilder.model.ISEComponent;
+import com.scarlatti.ise.app.scriptBuilder.model.ISEConnector;
 import com.scarlatti.ise.app.scriptBuilder.model.ISEScript;
 import com.scarlatti.ise.app.scriptBuilder.model.json.ScriptProps;
 import com.scarlatti.ise.app.scriptExecutor.model.ISEScriptContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +25,8 @@ import org.springframework.stereotype.Component;
 public class ScriptExecutorService {
 
     private ScriptBuilderService scriptBuilderService;
+
+    private static final Logger log = LoggerFactory.getLogger(ScriptExecutorService.class);
 
     public ScriptExecutorService(ScriptBuilderService scriptBuilderService) {
         this.scriptBuilderService = scriptBuilderService;
@@ -46,6 +52,7 @@ public class ScriptExecutorService {
      * @return the result of the execution
      */
     public synchronized ScriptExecutionResult execute(ISEScript script) {
+        log.info("Executing script: " + script);
         return doExecute(script);
     }
 
@@ -59,9 +66,23 @@ public class ScriptExecutorService {
                 }
             });
 
-            // TODO register the components
+            registerComponents(script, context);
+
+            // TODO register the connectors
 
             return new ScriptExecutionResult(0);
         });
+    }
+
+    protected void registerComponents(ISEScript script, ISEScriptContext context) {
+        for (ISEComponent component : script.getComponents()) {
+            component.registerComponent(context);
+        }
+    }
+
+    protected void registerConnectors(ISEScript script, ISEScriptContext context) {
+        for (ISEConnector connector : script.getConnectors()) {
+            connector.registerConnector(context);
+        }
     }
 }
